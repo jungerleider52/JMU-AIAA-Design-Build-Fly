@@ -4,23 +4,24 @@
 #define MOTOR_INTERFACE_TYPE 1
 
 // Pin definitions
-#define A1x 1
-#define A2x 2
-#define B1x 3
-#define B2x 4
-#define A1y 5
-#define A2y 6
-#define B1y 7
-#define B2y 8
+#define A1x1 1
+#define A2x1 2
+#define B1x1 3
+#define B2x1 4
+#define A1y1 5
+#define A2y1 6
+#define B1y1 7
+#define B2y1 8
+#define A1y2 9
+#define A2y2 10
+#define B1y2 11
+#define B2y2 12
 
 // Create stepper objects
 // below format works for TB6612 (Bipolar, constant voltage, H-Bridge motor driver)
-AccelStepper stepperX(AccelStepper::FULL4WIRE, A1x, A2x, B1x, B2x);
-AccelStepper stepperY(AccelStepper::FULL4WIRE, A1y, A2y, B1y, B2y);
-
-// Motion settings
-float maxSpeed = 800.0;
-float acceleration = 400.0;
+AccelStepper stepperX1(AccelStepper::FULL4WIRE, A1x1, A2x1, B1x1, B2x1);
+AccelStepper stepperY1(AccelStepper::FULL4WIRE, A1y1, A2y1, B1y1, B2y1);
+AccelStepper stepperY2(AccelStepper::FULL4WIRE, A1y2, A2y2, B1y2, B2y2);
 
 // Example airfoil path (simple shape for demo)
 const int numPoints = 6;
@@ -42,11 +43,11 @@ int currentPoint = 0;
 void setup() {
   Serial.begin(115200);
 
-  stepperX.setMaxSpeed(maxSpeed);
-  stepperX.setAcceleration(acceleration);
+  stepperX1.setMaxSpeed(800);
+  stepperX1.setAcceleration(400);
 
-  stepperY.setMaxSpeed(maxSpeed);
-  stepperY.setAcceleration(acceleration);
+  stepperY1.setMaxSpeed(800);
+  stepperY1.setAcceleration(400);
 
   Serial.println("Hot Wire Cutter Ready");
 }
@@ -64,12 +65,14 @@ void moveToPoint(float x_mm, float y_mm) {
   long x_steps = x_mm * stepsPerMM;
   long y_steps = y_mm * stepsPerMM;
 
-  stepperX.moveTo(x_steps);
-  stepperY.moveTo(y_steps);
+  stepperX1.moveTo(x_steps);
+  stepperY1.moveTo(y_steps);
+  stepperY2.moveTo(x_steps);
 
-  while (stepperX.distanceToGo() != 0 || stepperY.distanceToGo() != 0) {
-    stepperX.run();
-    stepperY.run();
+  while (stepperX1.distanceToGo() != 0 || stepperY1.distanceToGo() != 0) {
+    stepperX1.run();
+    stepperY1.run();
+    stepperY2.run();
   }
 
   Serial.print("Moved to: ");
