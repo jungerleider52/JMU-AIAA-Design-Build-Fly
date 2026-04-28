@@ -67,7 +67,7 @@ void moveToPoint(float x_mm, float y_mm) {
 
   stepperX1.moveTo(x_steps);
   stepperY1.moveTo(y_steps);
-  stepperY2.moveTo(x_steps);
+  stepperY2.moveTo(y_steps);
 
   while (stepperX1.distanceToGo() != 0 || stepperY1.distanceToGo() != 0) {
     stepperX1.run();
