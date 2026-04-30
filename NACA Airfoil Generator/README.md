@@ -1,4 +1,4 @@
-## NACA Airfoil Generator
+# NACA Airfoil Generator
 
 - `NACA_Airfoil_Generator.exe` can be download and ran directly, no installation needed.
 - With it you can generate 4-digit NACA airfoils with ease, and save a `.txt` file of its coordinates.
@@ -7,7 +7,7 @@
 
 Within the `source-code` folder you will find the Python program(s) that it runs off of.
 
-# Application Instructions:
+## Application Instructions:
 
 4 Digit NACA Airfoil Dimensions Calculator.
 
