@@ -1,11 +1,11 @@
 # NACA Airfoil Generator
 
-- `NACA_Airfoil_Generator.exe` can be download and ran directly, no installation needed.
+- `NACA_Airfoil_Generator.exe` can be downloaded and ran directly, no installation needed.
 - With it you can generate 4-digit NACA airfoils with ease, and save a `.txt` file of its coordinates.
-- It will automatically create a folder to hold your wing files called `NACA_WINGS` in the same place where you store the `.exe`
+- It will automatically create a folder to hold your wing files called `NACA_Wings` in the same place where you store `NACA_Airfoil_Generator.exe`.
 - The advantage of this program versus ones you can find on the web, is that the output is formatted to be imported directly into SolidWorks with no reformatting necessary.
 
-Within the `source-code` folder you will find the Python program(s) that it runs off of.
+Within the `source-code` folder you will find the base Python program(s) if you prefer to run it that way.
 
 ## Application Instructions:
 
